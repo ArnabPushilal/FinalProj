@@ -138,7 +138,7 @@ def train_CF(trainloader,valloader,model,optimizer,criterion,writer,epochs=10,de
 
             input_dict['user']=input_dict['user'].float().type(torch.LongTensor).to(device) 
             input_dict['ingredients']=input_dict['ingredients'].to(device) 
-            input_dict['tags']=input_dict['tags'].to(device) 
+            #input_dict['tags']=input_dict['tags'].to(device) 
             input_dict['recipe']=input_dict['recipe'].float().type(torch.LongTensor).to(device)
             #rating=input_dict['rating'].float().type(torch.LongTensor).to(device)
             rating=input_dict['rating'].float().to(device)
@@ -167,7 +167,7 @@ def train_CF(trainloader,valloader,model,optimizer,criterion,writer,epochs=10,de
 
             input_dict['user']=input_dict['user'].float().type(torch.LongTensor).to(device) 
             input_dict['ingredients']=input_dict['ingredients'].to(device) 
-            input_dict['tags']=input_dict['tags'].to(device) 
+            #input_dict['tags']=input_dict['tags'].to(device) 
             input_dict['recipe']=input_dict['recipe'].float().type(torch.LongTensor).to(device)
             #rating=input_dict['rating'].float().type(torch.LongTensor).to(device)
             rating=input_dict['rating'].float().to(device)

@@ -43,10 +43,10 @@ class neuralCFdata(Dataset):
         rating=row['rating']
         ingredients=torch.tensor(row['ingredients_tok'])
         health=row['tot_health']
-        tags=torch.tensor(row['tags_tok'])
+        #tags=torch.tensor(row['tags_tok'])
         
 
-        return {'user':user,'recipe':recipe,'rating':rating,'ingredients':ingredients,'health':health,'tags':tags}
+        return {'user':user,'recipe':recipe,'rating':rating,'ingredients':ingredients,'health':health}#,'tags':tags}
     def __len__(self):
 
         return len(self.df)

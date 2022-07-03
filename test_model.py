@@ -137,7 +137,7 @@ def test_model_CF(testloader,model,optimizer,criterion,device='cpu',print_=True)
             input_dict['user']=input_dict['user'].float().type(torch.LongTensor).to(device) 
             input_dict['recipe']=input_dict['recipe'].float().type(torch.LongTensor).to(device) 
             input_dict['ingredients']=input_dict['ingredients'].to(device) 
-            input_dict['tags']=input_dict['tags'].to(device) 
+            #input_dict['tags']=input_dict['tags'].to(device) 
             rating=input_dict['rating'].float().to(device)
             score= model(input_dict)
             preds_prob.append(score.detach().cpu().numpy())
@@ -298,3 +298,29 @@ def test_model_CF_b(testloader,model,optimizer,criterion,device='cpu',print_=Tru
     print("Weighted F1: ",round(np.mean(test_f1),3))
 
     return np.array(preds_array,dtype='object'),np.array(preds_prob,dtype='object')
+
+
+def return_prob(testloader,model,optimizer,criterion,device='cpu',print_=True):
+    
+
+  model.to(device)
+  preds_prob=[]
+ 
+
+  for i, batch_data in enumerate(testloader, 1):
+        
+         with torch.no_grad():
+
+            input_dict = batch_data 
+
+            input_dict['user']=input_dict['user'].float().type(torch.LongTensor).to(device) 
+            input_dict['recipe']=input_dict['recipe'].float().type(torch.LongTensor).to(device) 
+            input_dict['ingredients']=input_dict['ingredients'].to(device) 
+            #input_dict['tags']=input_dict['tags'].to(device) 
+      
+            score= model(input_dict)
+            preds_prob.append(score.detach().cpu().numpy())
+            
+          
+
+  return np.array(preds_prob,dtype='object')
